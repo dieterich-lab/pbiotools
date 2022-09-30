@@ -1,5 +1,5 @@
 biopython==1.73
-joblib==0.13.2
+joblib==1.2.0
 numpy>=1.16,<1.17
 pandas==0.24.0
 pysam==0.15.2 # with Samtools-1.7
