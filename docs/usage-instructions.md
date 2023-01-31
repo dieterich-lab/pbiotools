@@ -1,6 +1,6 @@
 # Usage
 
-There is currently a minimal documentation for the `pbio` package.
+There is currently only a minimal documentation for the **pbiotools** package.
 
 ## Bioinformatics utilities (utils)
 
@@ -15,10 +15,6 @@ There is currently a minimal documentation for the `pbio` package.
   - [Merge fasta files and remove duplicate sequences](#merge-fasta-files-and-remove-duplicate-sequences)
 
   - [Get read length distributions](#get-read-length-distributions)
-
-- [Bio plotting utilities](#bio-plotting-utilities)
-
-  - [Plotting read length distributions](#plotting-read-length-distributions)
 
 - [Other utilities](#other-utilities)
 
@@ -207,33 +203,6 @@ get-read-length-distribution <file_1> [<file_2> ...] -o/--out <out> [-f/--file-t
   If `AUTO` is given, then the type is guess based on the extension of the first
   file. Please use the `--help` flag to see more information about how the file
   types are guessed. Default: `AUTO`. Choices: `AUTO`, `bam`, `fasta` or `fastq`
-
-# Bio plotting utilities
-
-## Plotting read length distributions
-
-Create bar charts of the length distributions created by [`get-read-length-distributions`](#get-read-length-distributions).
-
-```
-plot-read-length-distribution <length_distribution> <basename> <out> [--title <title>] [--min-read-length <min_read_length>] [--max-read-length <max_read_length>] [--ymax <ymax>] [--fontsize <fontsize>]
-```
-
-### Command line options
-
-- `length_distribution `. The file created by
-  [`get-read-length-distributions`](#get-read-length-distributions)
-
-- `basename`. The "basename" of the sample to plot, as given in
-  `length_distribution`. Alternatively, `ALL` can be given, and the plot will
-  include all of the samples as a factor plot.
-- `out`. The output filename. The extension should be something which matplotlib
-  can interpret, such as "pdf" or "png".
-- [`--title`]. An optional title included at the top of the plot.
-- [`--{min,max}-read-length`]. Optionally, reads lengths above or below the
-  given thresholds will not be shown. Default: All read lengths are shown.
-- [`--ymax`]. The maximum for the y-axis in the bar charts. Default: the maximum
-  values will be selected based on the maximum count in the data.
-- [`--fontsize`]. The size of the fonts in the plots.
 
 # Other Utilities
 
