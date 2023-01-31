@@ -21,14 +21,13 @@ classifiers = [
   "Operating System :: MacOS :: MacOS X",
   "Operating System :: POSIX :: Linux",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.6",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
 ]
 dynamic = ["version"]
-requires-python = ">=3.6,<3.11"
+requires-python = ">=3.7,<3.11"
 dependencies = [
   "biopython",
   "dask",
@@ -45,7 +44,6 @@ dependencies = [
   "pyensembl",
   "pysam",
   "pytest",
-  "pyyaml",
   "seaborn",
   "scikit-learn",
   "scipy",
@@ -74,7 +72,6 @@ get-read-length-distribution = "pbiotools.utils.pgrms.get_read_length_distributi
 gtf-to-bed12 = "pbiotools.utils.pgrms.gtf_to_bed12:main"
 join-long-chromosomes = "pbiotools.utils.pgrms.join_long_chromosomes:main"
 merge-isoforms = "pbiotools.utils.pgrms.merge_isoforms:main"
-parse-meme-names = "pbiotools.utils.pgrms.parse_meme_names:main"
 remove-duplicate-bed-entries = "pbiotools.utils.pgrms.remove_duplicate_bed_entries:main"
 remove-duplicate-sequences = "pbiotools.utils.pgrms.remove_duplicate_sequences:main"
 remove-multimapping-reads = "pbiotools.utils.pgrms.remove_multimapping_reads:main"

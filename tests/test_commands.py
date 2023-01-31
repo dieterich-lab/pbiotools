@@ -25,7 +25,6 @@ def list_commands():
         "gtf-to-bed12",
         "join-long-chromosomes",
         "merge-isoforms",
-        "parse-meme-names",
         "remove-duplicate-bed-entries",
         "remove-duplicate-sequences",
         "remove-multimapping-reads",
