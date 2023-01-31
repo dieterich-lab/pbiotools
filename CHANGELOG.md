@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [3.0.0] - 2023-01-10
+## [4.0.0] - 2023-01
 
-### Changed
+### Removed
 
-- Upgrade all dependencies/required packages, install via Conda
+- Python 3.6 (requires Python >= 3.7)
+- pybedtools, pyyaml
+- parse-meme-names
+
+## [3.0.0]
+
+### Added
+
+- PyPI installation
+- Bioconda installation
 
 ### Removed
 

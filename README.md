@@ -21,7 +21,7 @@ docker pull quay.io/biocontainers/pbiotools:<tag>
 singularity pull pbiotools.sif docker://quay.io/biocontainers/pbiotools:<tag>
 ```
 
-There is no _latest_ tag, you need to specify the version tag. See [pbiotools/tags](https://quay.io/repository/biocontainers/pbiotools?tab=tags) for valid values for <tag>.
+There is no _latest_ tag, you need to specify the version tag. See [pbiotools/tags](https://quay.io/repository/biocontainers/pbiotools?tab=tags) for valid values for `<tag>`.
 
 ## Documentation
 
