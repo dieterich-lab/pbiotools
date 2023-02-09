@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - dev-ssciwr
+  pull_request:
+    branches:
+      - master
+      - dev-ssciwr
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pip:
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pbiotools including test dependencies
+        run: pip install .[test] --verbose
+      - name: Run tests
+        run: python -m pytest . -v
+  conda:
+    runs-on: ${{matrix.os}}
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create pbiotools conda environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          auto-update-conda: true
+          auto-activate-base: false
+          activate-environment: pbiotools
+          environment-file: environment.yml
+      - name: Display conda env info
+        run: |
+          conda info
+          conda list
+          conda config --show-sources
+          conda config --show
+          printenv | sort
+      - name: Install pbiotools
+        #run: pip install . --no-deps --ignore-installed -vvv
+        run: pip install . -vvv
+      - name: Run tests
+        run: python -m pytest . -v

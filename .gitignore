@@ -10,3 +10,7 @@ _templates
 
 
 local/
+
+# build
+build/
+dist/

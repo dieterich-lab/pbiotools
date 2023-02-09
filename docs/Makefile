@@ -1,5 +1,5 @@
 # Makefile
-# 
+#
 # Converts Markdown to other formats (HTML, PDF) using Pandoc
 # <http://johnmacfarlane.net/pandoc/>
 #
@@ -31,7 +31,7 @@ PANDOC_PDF_OPTIONS=
 %.html : %.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_HTML_OPTIONS) -o $@ $<
 	sed -i 's:\.md:.html:g' $@
-        
+
 
 %.pdf : %.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $@ $<

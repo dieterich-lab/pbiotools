@@ -1,0 +1,26 @@
+name: pbiotools
+channels:
+  - defaults
+  - conda-forge
+  - bioconda
+dependencies:
+  - python
+  - biopython
+  - dask # ?
+  - fastparquet # ?
+  - joblib
+  - matplotlib-base
+  - matplotlib-venn # ?
+  - more-itertools
+  - mygene # ?
+  - numpy
+  - openpyxl # ?
+  - pandas
+  - pip
+  - pyensembl # ?
+  - pysam
+  - pytest
+  - seaborn
+  - scikit-learn
+  - scipy
+  - tqdm

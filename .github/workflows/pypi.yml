@@ -1,0 +1,25 @@
+name: PyPI
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+jobs:
+  pypi:
+    name: Upload to PyPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install --upgrade build
+      - name: Install pbiotools including test dependencies
+        run: pip install .[test] --verbose
+      - name: Run tests
+        run: python -m pytest . -v
+      - run: python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.pypi_token }}

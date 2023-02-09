@@ -1,0 +1,105 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pbiotools"
+description = "Miscellaneous bioinformatics and other supporting utilities for Python 3"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Brandon Malone" }]
+maintainers = [
+  { name = "Etienne Boileau", email = "boileau@uni-heidelberg.de" }
+]
+keywords = ["bioinformatics", "riboseq"]
+# See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+dynamic = ["version"]
+requires-python = ">=3.7,<3.11"
+dependencies = [
+  "biopython",
+  "dask",
+  "fastparquet",
+  "joblib",
+  "matplotlib",
+  "matplotlib_venn",
+  "more_itertools",
+  "mygene",
+  "numpy",
+  "openpyxl",
+  "pandas",
+  "pip",
+  "pyensembl",
+  "pysam",
+  "pytest",
+  "seaborn",
+  "scikit-learn",
+  "scipy",
+  "tqdm",
+]
+
+[project.scripts]
+add-mygene-info-to-orfs = "pbiotools.utils.pgrms.add_mygene_info_to_orfs:main"
+bam-to-wiggle = "pbiotools.utils.pgrms.bam_to_wiggle:main"
+bedx-to-bedy = "pbiotools.utils.pgrms.bedx_to_bedy:main"
+bed12-to-gtf = "pbiotools.utils.pgrms.bed12_to_gtf:main"
+convert-ccds-to-bed = "pbiotools.utils.pgrms.convert_ccds_to_bed:main"
+count-aligned-reads = "pbiotools.utils.pgrms.count_aligned_reads:main"
+count-reads = "pbiotools.utils.pgrms.count_reads:main"
+create-mygene-report = "pbiotools.utils.pgrms.create_mygene_report:main"
+dna-to-aa = "pbiotools.utils.pgrms.dna_to_aa:main"
+download-srr-files = "pbiotools.utils.pgrms.download_srr_files:main"
+extract-bed-sequences = "pbiotools.utils.pgrms.extract_bed_sequences:main"
+extract-cds-coordinates = "pbiotools.utils.pgrms.extract_cds_coordinates:main"
+fasta-to-fastq = "pbiotools.utils.pgrms.fasta_to_fastq:main"
+fastq-pe-dedupe = "pbiotools.utils.pgrms.fastq_pe_dedupe:main"
+filter-bam-by-ids = "pbiotools.utils.pgrms.filter_bam_by_ids:main"
+fix-all-bed-files = "pbiotools.utils.pgrms.fix_all_bed_files:main"
+get-all-utrs = "pbiotools.utils.pgrms.get_all_utrs:main"
+get-read-length-distribution = "pbiotools.utils.pgrms.get_read_length_distribution:main"
+gtf-to-bed12 = "pbiotools.utils.pgrms.gtf_to_bed12:main"
+join-long-chromosomes = "pbiotools.utils.pgrms.join_long_chromosomes:main"
+merge-isoforms = "pbiotools.utils.pgrms.merge_isoforms:main"
+remove-duplicate-bed-entries = "pbiotools.utils.pgrms.remove_duplicate_bed_entries:main"
+remove-duplicate-sequences = "pbiotools.utils.pgrms.remove_duplicate_sequences:main"
+remove-multimapping-reads = "pbiotools.utils.pgrms.remove_multimapping_reads:main"
+reorder-fasta = "pbiotools.utils.pgrms.reorder_fasta:main"
+run-bowtie = "pbiotools.utils.pgrms.run_bowtie:main"
+run-signalp = "pbiotools.utils.pgrms.run_signalp:main"
+run-tmhmm = "pbiotools.utils.pgrms.run_tmhmm:main"
+split-bed12-blocks = "pbiotools.utils.pgrms.split_bed12_blocks:main"
+split-long-chromosomes = "pbiotools.utils.pgrms.split_long_chromosomes:main"
+subtract-bed = "pbiotools.utils.pgrms.subtract_bed:main"
+
+[project.urls]
+Github = "https://github.com/dieterich-lab/pbiotools"
+Issues = "https://github.com/dieterich-lab/pbiotools/issues"
+
+[project.optional-dependencies]
+tests = ["pytest", "pytest-cov"]
+docs = [
+  "ipykernel",
+  "matplotlib",
+  "nbsphinx",
+  "pandoc",
+  "sphinx>=4.5.0",
+  "sphinx_rtd_theme>=1.0.0"
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "pbiotools.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
