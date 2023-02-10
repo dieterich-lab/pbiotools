@@ -43,8 +43,9 @@ def get_transcript_id(gtf_entry, attr_names):
     ret = dict()
     for attr in attr_names:
         if attr not in attributes.index:
-            continue
-        ret[attr] = attributes[attr]
+            ret[attr] = None
+        else:
+            ret[attr] = attributes[attr]
     return ret
 
 
