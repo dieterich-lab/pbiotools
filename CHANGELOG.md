@@ -5,7 +5,17 @@ All notable changes to the `pbiotools` package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [Unreleased] - started 2023-02
+
+## [4.0.1] - 2023-02
+
+### Fixed
+
+- Handling of missing GTF attributes
+
+### Changed
+
+- Docstrings (Rp-Bp API)
 
 ## [4.0.0] - 2023-01
 
