@@ -30,63 +30,52 @@ def add_logging_options(parser, default_log_file=""):
 
     logging_options.add_argument(
         "--log-file",
-        help="This option specifies a file to "
-        "which logging statements will be written (in addition to stdout and "
-        "stderr, if specified)",
+        help="Log file (logging is redirected to this file, "
+        "in addition to stdout and stderr, if specified).",
         default=default_log_file,
     )
 
     logging_options.add_argument(
         "--enable-ext-logging",
-        help="If this flag is present, "
-        "logging is enabled for external programs that may be disabled by default. "
-        "This is used in particular to send CmdStanPy logging statements to logs.",
+        help="Enable logging for external programs that may be disabled "
+        "by default, *e.g.* CmdStanPy.",
         action="store_true",
     )
 
     logging_options.add_argument(
         "--log-stdout",
-        help="If this flag is present, then "
-        "logging statements will be written to stdout (in addition to a file "
-        "and stderr, if specified)",
+        help="Log to stdout (in addition to a file and stderr, if specified).",
         action="store_true",
     )
 
     logging_options.add_argument(
         "--no-log-stderr",
-        help="Unless this flag is present, then "
-        "logging statements will be written to stderr (in addition to a file "
-        "and stdout, if specified)",
+        help="Do not send logging to stderr.",
         action="store_true",
     )
 
     logging_options.add_argument(
         "--logging-level",
-        help="If this value is specified, " "then it will be used for all logs",
+        help="Logging level for all logs.",
         choices=logging_level_choices,
         default=default_logging_level,
     )
     logging_options.add_argument(
         "--file-logging-level",
-        help="The logging level to be "
-        "used for the log file, if specified. This option overrides "
-        "--logging-level.",
+        help="Logging level for the log file. "
+        "This option overrides ``--logging-level``.",
         choices=logging_level_choices,
         default=default_specific_logging_level,
     )
     logging_options.add_argument(
         "--stdout-logging-level",
-        help="The logging level to be "
-        "used for the stdout log, if specified. This option overrides "
-        "--logging-level.",
+        help="Logging level for stdout. " "This option overrides ``--logging-level``.",
         choices=logging_level_choices,
         default=default_specific_logging_level,
     )
     logging_options.add_argument(
         "--stderr-logging-level",
-        help="The logging level to be "
-        "used for the stderr log, if specified. This option overrides "
-        "--logging-level.",
+        help="Logging level for stderr. " "This option overrides ``--logging-level``.",
         choices=logging_level_choices,
         default=default_specific_logging_level,
     )

@@ -250,65 +250,80 @@ def add_sbatch_options(
     slurm_options = parser.add_argument_group("slurm options")
 
     slurm_options.add_argument(
-        "--num-cpus", help="The number of CPUs to use", type=int, default=num_cpus
+        "--num-cpus",
+        help="The number of CPUs to use (not only for SLURM). "
+        "For STAR, ``--num-cpus`` are threads, but in general, this is "
+        "number of processes to spawn. This value should not be greater "
+        "than the number of cores available. When used with SLURM, this is "
+        "equivalent to: ``--ntasks 1 --cpus-per-task <num-cpus>``.",
+        type=int,
+        default=num_cpus,
     )
     slurm_options.add_argument(
-        "--mem", help="The amount of RAM to request", default=mem
+        "--mem",
+        help="Real memory required (per node), mostly for STAR genome indexing "
+        "(not only for SLURM). When used with SLURM, this is equivalent to: "
+        "``--mem=<mem>``.",
+        default=mem,
     )
     slurm_options.add_argument(
-        "--time", help="The amount of time to request", default=time
+        "--time",
+        help="Set a limit on the total run time of the job allocation. "
+        "This is equivalent to: ``--time <time>``.",
+        default=time,
     )
     slurm_options.add_argument(
-        "--partitions", help="The partitions to request", default=partitions
+        "--partitions",
+        help="Request a partition for the resource allocation. "
+        "This is equivalent to: ``-p <partitions>``.",
+        default=partitions,
     )
     slurm_options.add_argument(
         "--no-output",
-        help="If this flag is present, stdout " "will be redirected to /dev/null",
+        help="Redirect stdout to /dev/null. This is equivalent to: ``--output=/dev/null``. "
+        "By default, stdout is redirected to ``--output=slurm-*.out``.",
         action="store_true",
     )
     slurm_options.add_argument(
         "--no-error",
-        help="If this flag is present, stderr " "will be redirected to /dev/null",
+        help="Redirect stderr to /dev/null. This is equivalent to: ``--output=/dev/null``. "
+        "By default, stderr is redirected to ``--output=slurm-*.err.``",
         action="store_true",
     )
     slurm_options.add_argument(
         "--stdout-file",
-        help="If this is present and the "
-        "--no-output flag is not given, then stdout will be directed to this "
-        "file rather than slurm-<job>.out",
+        help="Log file (stdout) if not ``--no-output``. This is equivalent to: "
+        "``--output=stdout-file``.",
         default=stdout_file,
     )
     slurm_options.add_argument(
         "--stderr-file",
-        help="If this is present and the "
-        "--no-error flag is not given, then stderr will be directed to this "
-        "file rather than slurm-<job>.err",
+        help="Log file (stderr) if not ``--no-error``. This is equivalent to: "
+        "``--output=stderr-file``.",
         default=stderr_file,
     )
     slurm_options.add_argument(
         "--do-not-call",
-        help="If this flag is present, then the commands "
-        "will not be executed (but will be printed).",
+        help="Do not execute the program (dry run).",
         action="store_true",
     )
     slurm_options.add_argument(
         "--use-slurm",
-        help="If this flag is present, the program calls "
-        "will be submitted to SLURM.",
+        help="Submitted calls to SLURM.",
         action="store_true",
     )
     slurm_options.add_argument(
         "--mail-type",
-        help="When to send an email notifcation "
-        "of the job status. See official documentation for a description of the "
-        "values. If a mail-user is not specified, this will revert to 'None'.",
+        help="Notify user by email when certain event types occur, "
+        "if ``--mail-user`` is specified.",
         nargs="*",
         choices=mail_type_choices,
         default=mail_type,
     )
     slurm_options.add_argument(
         "--mail-user",
-        help="To whom an email will be sent, in " "accordance with mail-type",
+        help="User to receive email notification of state changes "
+        "as defined by ``--mail-type``.",
         default=mail_user,
     )
 

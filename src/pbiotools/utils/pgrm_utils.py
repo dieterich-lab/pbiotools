@@ -223,18 +223,17 @@ def add_star_options(parser, star_executable: str = "STAR"):
 
     star_options.add_argument(
         "--star-executable",
-        help="The name of the STAR " "executable",
+        help="The name of the STAR executable",
         default=star_executable,
     )
 
     star_options.add_argument(
         "--star-options",
-        help="""A space-delimited
-        list of options to pass to star (for the mapping step only). Each option
-        must be quoted separately as in "--starOption value", using soft
-        quotes, where '--starOption' is the long parameter name from star, and 'value'
-        is the value given to this parameter. If specified, star options will override
-        default settings.""",
+        help="A space-delimited list of options to pass to STAR. "
+        'Each option is quoted separately as in ``"--starOption value"``, '
+        "using soft quotes, where starOption is the long parameter "
+        "name from STAR, and value is the value given to this parameter. "
+        "If specified, STAR options will override default settings.",
         nargs="*",
         type=str,
     )
@@ -302,11 +301,11 @@ def add_flexbar_options(parser):
 
     flexbar_options.add_argument(
         "--flexbar-options",
-        help="""Optional argument: a space-delimited
-        list of options to pass to flexbar. Each option must be quoted separately as in
-        "--flexbarOption value", using soft quotes, where '--flexbarOption'
-        is the long parameter name from flexbar and 'value' is the value given to this parameter.
-        If specified, flexbar options will override default settings.""",
+        help="A space-delimited list of options to pass to Flexbar. "
+        'Each option is quoted separately as in ``"--flexbarOption value"``, '
+        "using soft quotes, where flexbarOption is the long parameter name "
+        "from Flexbar, and value is the value given to this parameter. "
+        "If specified, Flexbar options will override default settings.",
         nargs="*",
         type=str,
     )
