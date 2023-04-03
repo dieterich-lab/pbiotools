@@ -188,7 +188,7 @@ def write_df(
     filetype="AUTO",
     sheet="Sheet_1",
     do_not_compress=False,
-    **kwargs
+    **kwargs,
 ):
     """This function writes a data frame to a file of the specified type.
     Unless otherwise specified, csv files are gzipped when written. By

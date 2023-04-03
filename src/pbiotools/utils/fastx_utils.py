@@ -205,7 +205,6 @@ def remove_duplicate_sequences(
     seq_dict = {}
 
     for fasta_in in fastas_in:
-
         seqs = get_read_iterator(fasta_in, is_fasta=True)
 
         if lower_precedence_re is not None:
@@ -446,7 +445,6 @@ def _check_fastq_read(read, read_index):
 
 
 def check_fastq_file(filename, break_on_error=True, raise_on_error=True, logger=logger):
-
     """This function checks that a fastq file is valid. Optionally, it
     raises an exception if the file is invalid. Otherwise, it writes
     a "critical" warning message.
@@ -545,7 +543,6 @@ def check_fastq_file(filename, break_on_error=True, raise_on_error=True, logger=
 
 
 def check_fasta_file(filename, break_on_error=True, raise_on_error=True, logger=logger):
-
     """This function checks the validity of a fasta file. This is somewhat
     difficult because the format is so loose; in contrast, for example,
     the length of the sequence and quality must match in fastq.

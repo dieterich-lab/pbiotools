@@ -329,7 +329,6 @@ def plot_roc_curve(
     xlabel="False positive rate",
     ylabel="True positive rate",
 ):
-
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib.colors
@@ -407,7 +406,6 @@ def plot_confusion_matrix(
     predicted_tick_rotation=None,
     out=None,
 ):
-
     """Plot the given confusion matrix"""
     if ax is None:
         fig, ax = plt.subplots()
@@ -456,7 +454,6 @@ def plot_confusion_matrix(
         s = confusion_matrix.shape
         it = itertools.product(range(s[0]), range(s[1]))
         for i, j in it:
-
             val = confusion_matrix[i, j]
             cell_color = cmap(mappable.norm(val))
 
@@ -498,7 +495,6 @@ def plot_venn_diagram(
     counts_fontsize=12,
     sci_notation_limit=999,
 ):
-
     """This function is a wrapper around matplotlib_venn. It most just makes
     setting the fonts and and label formatting a bit easier.
 
@@ -592,7 +588,6 @@ def create_simple_bar_chart(
     legend_fontsize=12,
     title_fontsize=12,
 ):
-
     import numpy as np
     import matplotlib.colors
     import matplotlib.pyplot as plt

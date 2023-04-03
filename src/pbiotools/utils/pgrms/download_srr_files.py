@@ -104,7 +104,6 @@ def get_ebi_path(run_accession):
 
 
 def download_sra_file(row, args):
-
     get_path = get_ebi_path
     if args.source == "ncbi":
         get_path = get_ncbi_path
@@ -136,7 +135,6 @@ def download_sra_file(row, args):
 
 
 def extract_sra_file(row, args):
-
     get_path = get_ebi_path
     if args.source == "ncbi":
         get_path = get_ncbi_path
@@ -196,9 +194,7 @@ def extract_sra_file(row, args):
 
 
 def process_files(srr, args):
-
     for i, (index, row) in enumerate(srr.iterrows()):
-
         download_sra_file(row, args)
         extract_sra_file(row, args)
 

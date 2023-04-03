@@ -15,7 +15,7 @@ def apply_parallel_iter(
     progress_bar=False,
     total=None,
     num_groups=None,
-    backend="loky"
+    backend="loky",
 ):
     """This function parallelizes applying a function to all items in an iterator using the
     joblib library. In particular, func is called for each of the items in the list. (Unless
@@ -171,7 +171,7 @@ def apply_parallel_split(
     *args,
     progress_bar=False,
     num_groups=None,
-    backend="loky"
+    backend="loky",
 ):
     """This function parallelizes applying a function to the rows of a data frame using the
     joblib library. The data frame is first split into num_procs equal-sized groups, and
@@ -343,5 +343,5 @@ def apply_iter_simple(
         progress_bar=progress_bar,
         total=total,
         num_groups=num_groups,
-        backend=backend
+        backend=backend,
     )

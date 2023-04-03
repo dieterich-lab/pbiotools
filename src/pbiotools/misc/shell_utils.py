@@ -125,7 +125,6 @@ def download_file(url, local_filename=None, chunk_size=1024, overwrite=False):
 def check_programs_exist(
     programs, raise_on_error=True, package_name=None, logger=logger
 ):
-
     """This function checks that all of the programs in the list cam be
     called from python. After checking all of the programs, an exception
     is raised if any of them are not callable. Optionally, only a warning
@@ -172,7 +171,6 @@ def check_programs_exist(
 
 
 def check_call_step(cmd, current_step=-1, init_step=-1, call=True, raise_on_error=True):
-
     logging.info(cmd)
     ret_code = 0
 
@@ -205,7 +203,6 @@ def check_call(cmd, call=True, raise_on_error=True):
 
 
 def check_output_step(cmd, current_step=0, init_step=0, raise_on_error=True):
-
     logging.info(cmd)
     if current_step >= init_step:
         logging.info("calling")
@@ -240,7 +237,6 @@ def call_if_not_exists(
     to_delete=[],
     keep_delete_files=False,
 ):
-
     """This function checks if out_file exists. If it does not, or if overwrite
     is true, then the command is executed, according to the call flag.
     Otherwise, a warning is issued stating that the file already exists

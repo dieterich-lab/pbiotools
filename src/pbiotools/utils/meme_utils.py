@@ -69,7 +69,6 @@ def parse_meme_motifs(meme_motifs_file):
     read_background = False
 
     with open(meme_motifs_file) as f:
-
         for line in f:
             ll = line.strip().lower()
 

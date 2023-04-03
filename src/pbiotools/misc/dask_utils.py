@@ -43,7 +43,6 @@ def connect(args):
     cluster = None
 
     if args.cluster_location == "LOCAL":
-
         msg = "[dask_utils]: starting local dask cluster"
         logger.info(msg)
 
@@ -73,7 +72,6 @@ def connect(args):
 def add_dask_options(
     parser, num_cpus=1, num_threads_per_cpu=1, cluster_location="LOCAL"
 ):
-
     """Add options for connecting to and/or controlling a local dask cluster
 
     Parameters
@@ -131,7 +129,6 @@ def add_dask_values_to_args(
     cluster_location="LOCAL",
     client_restart=False,
 ):
-
     """Add the options for a dask cluster to the given argparse namespace
 
     This function is mostly intended as a helper for use in ipython notebooks.

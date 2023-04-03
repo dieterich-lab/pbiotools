@@ -329,7 +329,6 @@ def check_range(
     raise_on_invalid=True,
     logger=logger,
 ):
-
     """This function checks whether the given value falls within the
     specified range. If not, either an exception is raised or a
     warning is logged.
@@ -606,7 +605,6 @@ def matrix_multiply(m1, m2, m3):
 
 
 def fit_bayesian_gaussian_mixture(X, n_components=100, seed=8675309, **kwargs):
-
     """Fit a sklearn.mixture.BayesianGaussianMixture with the parameters.
 
     This function is mostly used to give slightly more reasonable defaults for

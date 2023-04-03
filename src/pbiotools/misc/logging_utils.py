@@ -130,7 +130,6 @@ def get_logging_options_string(args):
 def update_logging(
     args, logger=None, format_str="%(levelname)-8s %(name)-8s %(asctime)s : %(message)s"
 ):
-
     """This function interprets the logging options in args. Presumably, these
         were added to an argument parser using add_logging_options.
 
@@ -197,7 +196,6 @@ def update_logging(
 def get_ipython_logger(
     logging_level="DEBUG", format_str="%(levelname)-8s : %(message)s"
 ):
-
     level = logging.getLevelName(logging_level)
     formatter = logging.Formatter(format_str)
 
