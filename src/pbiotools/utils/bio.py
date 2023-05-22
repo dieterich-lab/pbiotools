@@ -85,7 +85,6 @@ def read_bitseq_tr_file(
     comment="#",
     sep=" ",
 ):
-
     """This function reads the BitSeq transcript_info file into a data frame.
     The file is assumed to contain four columns: source_name,
     transcript_name, length and effective_length.
@@ -114,7 +113,6 @@ def read_bitseq_tr_file(
 def read_maxquant_peptides_file(
     filename, names=None, header="infer", comment="#", sep="\t"
 ):
-
     """This function reads the peptides.txt file produced by MaxQuant into a
     data frame. By default, the file is assumed to be tab-delimited, and
     the first row is used as the column names.
@@ -143,7 +141,6 @@ def read_maxquant_peptides_file(
 def read_protein_digestion_simulator_file(
     filename, names=None, header="infer", comment="#", sep="\t"
 ):
-
     """This function reads the output of the Protein Digestion Simulator program
     (https://omics.pnl.gov/software/protein-digestion-simulator). By default,
     the file is assumed to  be tab-delimited and the first row is used as

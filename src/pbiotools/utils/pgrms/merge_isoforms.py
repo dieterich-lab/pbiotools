@@ -36,7 +36,6 @@ def parse_attributes_group(rows):
 
 
 def merge_gene_group(g, transcript_id_field, transcript_id_format_str):
-
     interval_starts = np.array(g["start"])
 
     # we must add 1 to the ends because gtf is !closed! at the end, but

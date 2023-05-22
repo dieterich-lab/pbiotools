@@ -33,7 +33,6 @@ FIELDS = (
 
 
 def parse_go_terms(row, ontologies=["BP", "MF", "CC"], term="id"):
-
     """This function parses all of the gene ontology terms out of the "go"
     field of a record. It assumes the "go" field, if it is present, contains
     a dictionary in which the keys are the high-level GO hierarchies, and
@@ -122,7 +121,6 @@ def query_mygene(
     unique_only=True,
     mygene_url="http://mygene.info/v3",
 ):
-
     """This function uses mygene.info to find information about the
     genes specified in the provided list. In particular, this function
     looks for information (via mygene) from Swiss-Prot, TrEMBL,

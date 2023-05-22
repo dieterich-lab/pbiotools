@@ -61,7 +61,6 @@ def main():
             os.makedirs(args.out)
 
     for fastq in args.fastq:
-
         basename = utils.get_basename(fastq)
 
         out_files = []

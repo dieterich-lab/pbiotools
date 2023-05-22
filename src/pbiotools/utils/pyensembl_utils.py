@@ -220,7 +220,7 @@ def get_genome(
     transcript_fasta=None,
     logging_args=None,
     annotation_name="ensembl",
-    **kwargs
+    **kwargs,
 ):
     """Retrieve the pyensembl annotations associated with the given reference.
 
@@ -258,7 +258,7 @@ def get_genome(
         gtf_path_or_url=gtf,
         transcript_fasta_path_or_url=transcript_fasta,
         annotation_name=annotation_name,
-        **kwargs
+        **kwargs,
     )
 
     # this will create the database if needed

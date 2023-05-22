@@ -124,7 +124,7 @@ def write_gtf(data_frame, filename, compress=True, use_default_fields=True, **kw
         header=header,
         do_not_compress=do_not_compress,
         quoting=csv.QUOTE_NONE,
-        **kwargs
+        **kwargs,
     )
 
 

@@ -33,7 +33,6 @@ def check_sbatch(
     stderr_file=None,
     args=None,
 ):
-
     """This function wraps calls to sbatch. It adds the relevant command line
     options based on the parameters (either specified or extracted from
     args, if args is not None).
@@ -234,7 +233,6 @@ def add_sbatch_options(
     mail_type=["FAIL", "TIME_LIMIT"],
     mail_user=None,
 ):
-
     """This function adds the options for calling sbatch to the given parser.
     The provided arguments are used as defaults for the options.
 

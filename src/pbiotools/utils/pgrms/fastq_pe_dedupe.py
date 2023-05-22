@@ -103,7 +103,7 @@ def main():
         out_1 = utils.open(args.out_1, "w", compress=compress)
         out_2 = utils.open(args.out_2, "w", compress=compress)
 
-        for (seqs, srp) in tqdm.tqdm(seen_reads.items()):
+        for seqs, srp in tqdm.tqdm(seen_reads.items()):
             fastx_utils._write_fastq_entry(out_1, srp.r1_name, seqs[0], srp.r1_qual)
             fastx_utils._write_fastq_entry(out_2, srp.r2_name, seqs[1], srp.r2_qual)
 

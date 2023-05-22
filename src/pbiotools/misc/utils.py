@@ -222,14 +222,13 @@ def get_vars_to_save(to_save, to_remove=["parser", "args"]):
     import types
 
     # remove the system variables, modules and functions
-    for (var_name, value) in to_save.items():
+    for var_name, value in to_save.items():
         if var_name.startswith("__"):
             to_remove.append(var_name)
 
         elif isinstance(value, types.FunctionType) or isinstance(
             value, types.ModuleType
         ):
-
             to_remove.append(var_name)
 
     for var_name in to_remove:
@@ -755,7 +754,7 @@ def write_df(
     filetype="AUTO",
     sheet="Sheet_1",
     do_not_compress=False,
-    **kwargs
+    **kwargs,
 ):
     """This function writes a data frame to a file of the specified type.
     Unless otherwise specified, csv files are gzipped when written. By
@@ -1290,9 +1289,8 @@ def call_func_if_not_exists(
     file_checkers=None,
     to_delete=[],
     keep_delete_files=False,
-    **kwargs
+    **kwargs,
 ):
-
     """Call a python function with extra checks on input/output files, etc.
     This is adapted from shell_utils.call_if_not_exists, see this function
     for more details.

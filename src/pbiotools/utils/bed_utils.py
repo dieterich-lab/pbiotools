@@ -43,7 +43,7 @@ def read_bed(
     comment=None,
     header=None,
     use_default_field_names=False,
-    **kwargs
+    **kwargs,
 ):
     """This function reads a bed file into a pandas data frame. By default, it
     assumes the first line of the bed file actually gives the field names,
@@ -133,7 +133,7 @@ def write_bed(data_frame, filename, compress=True, **kwargs):
         header=header,
         do_not_compress=do_not_compress,
         quoting=csv.QUOTE_NONE,
-        **kwargs
+        **kwargs,
     )
 
 
@@ -1306,7 +1306,6 @@ def merge_intervals(interval_starts, interval_ends, interval_info=None):
         # and advance
         next_interval += 1
         if next_interval < num_intervals:
-
             next_interval_start = interval_starts[next_interval]
             next_interval_end = interval_ends[next_interval]
 
@@ -1430,7 +1429,6 @@ position_interval_intersection = collections.namedtuple(
 def get_position_intersections(
     positions, interval_starts, interval_ends, interval_info=None, position_info=None
 ):
-
     """This function finds the intersections of a set of (1bp) points and a
     set of intervals, specified by (inclusive) start and (exclusive) end
     positions. Furthermore, it allows arbitrary information to be attached
@@ -1530,10 +1528,8 @@ def get_position_intersections(
     next_exon_start = interval_starts[0]
 
     while next_p_site_position != np.inf:
-
         # do we grab the p_site or the exon
         if next_p_site_position < next_exon_start:
-
             # then we take the p_site
 
             # first, remove everything from the cache which ends before this
@@ -1742,10 +1738,8 @@ def get_exact_interval_matches(a_starts, a_ends, a_info, b_starts, b_ends, b_inf
 
     matches = []
     while next_a_interval < num_a_intervals:
-
         # get whichever interval comes next
         if next_a_start < next_b_start:
-
             # check if this exactly matches anything in the cache
             for c in cache:
                 starts = b_starts[c] == next_a_start
@@ -1768,7 +1762,6 @@ def get_exact_interval_matches(a_starts, a_ends, a_info, b_starts, b_ends, b_inf
             next_a_end = a_ends[next_a_interval]
 
         else:
-
             # just add it to the cache
             cache.append(next_b_interval)
 
@@ -1787,7 +1780,6 @@ def get_exact_interval_matches(a_starts, a_ends, a_info, b_starts, b_ends, b_inf
 def get_exact_block_matches(
     matches, block_counts_a, block_counts_b=None, block_id_index=None
 ):
-
     """This function finds pairs of transcripts (or whatever outer-level
     object is considered) which have exact interval matches for all of
     their blocks (i.e., exons). Roughly, it does this by counting the
@@ -2135,10 +2127,8 @@ def get_interval_overlaps(a_starts, a_ends, a_info, b_starts, b_ends, b_info):
 
     matches = []
     while (next_a_interval < num_a_intervals) or (len(a_cache) != 0):
-
         # get whichever interval comes next
         if next_a_start < next_b_start:
-
             # a is first
 
             # remove everything in the b_cache which ends before this starts
@@ -2211,7 +2201,6 @@ def get_interval_overlaps(a_starts, a_ends, a_info, b_starts, b_ends, b_info):
 
 
 def get_transcript_overlaps(interval_overlaps):
-
     """This function finds pairs of transcripts (or whatever outer-level
     object is considered) which have interval matches across multiple
     blocks and counts the total overlap.
@@ -2409,7 +2398,6 @@ def get_bed_overlaps(
 
     for seqname in seqnames:
         for strand in strands:
-
             m_bed_a_seqname = bed_a["seqname"] == seqname
             m_bed_b_seqname = bed_b["seqname"] == seqname
 
@@ -2548,7 +2536,6 @@ def get_entries_with_upstream_overlaps(
     exons_a=None,
     exons_b=None,
 ):
-
     """This function finds all intervals of A which have upstream intervals of B.
     It always takes the strand of the intervals into account. By default, the
     function looks for intervals in B which are strictly upstream of the
@@ -2721,7 +2708,6 @@ def get_bed_sequence(bed_entry, seq_sequence, split_exons=True):
         transcript_sequence = seq_sequence[genomic_start:genomic_end]
 
     else:
-
         exon_starts = np.fromstring(
             bed_entry["exon_genomic_relative_starts"], sep=",", dtype=int
         )
@@ -2819,7 +2805,7 @@ def get_all_bed_sequences(
 
     all_transcript_sequences = []
 
-    for (seqname, sequence) in fasta:
+    for seqname, sequence in fasta:
         msg = "Processing seqname: {}".format(seqname)
         logger.debug(msg)
 

@@ -35,7 +35,6 @@ extended_field_names = bed_utils.bed12_field_names + field_names
 
 
 def get_transcript_id(gtf_entry, attr_names):
-
     attributes = gtf_utils.parse_gtf_attributes(gtf_entry)
     # ... but what happen then?
     if not attr_names[0] in attributes.index:
@@ -55,7 +54,6 @@ def get_transcript_ids(gtf_entries, attr_names):
 
 
 def get_bed12_entry(gtf_entries):
-
     # must match bed_utils.bed12_field_names!
 
     starts = np.array(gtf_entries["start"])
