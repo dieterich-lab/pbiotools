@@ -5,7 +5,13 @@ All notable changes to the `pbiotools` package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased] - started 2023-02
+## [Unreleased] - started 2023-09
+
+## [4.0.2] - 2023-09
+
+### Removed
+
+- `math_utils.get_kth_fold` (more_itertools)
 
 ## [4.0.1] - 2023-02
 

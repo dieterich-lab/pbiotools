@@ -17,7 +17,6 @@ import collections
 import itertools
 from enum import Enum
 
-import more_itertools
 import numpy as np
 import pandas as pd
 import scipy.stats
@@ -1268,52 +1267,3 @@ def calc_provost_and_domingos_auc(y_true, y_score):
 
 fold_tuple_fields = ["X_train", "y_train", "X_test", "y_test"]
 fold_tuple = collections.namedtuple("fold", " ".join(fold_tuple_fields))
-
-
-def get_kth_fold(X, y, fold, num_folds=10, random_seed=8675309):
-    """Select the kth cross-validation fold using stratified CV
-
-    In partcular, this function uses `sklearn.model_selection.StratifiedKFold`
-    to split the data. It then selects the training and testing splits
-    from the k^th fold.
-
-    N.B. If `y` is None, the simple `KFold` is used instead.
-
-    Parameters
-    ----------
-    X, y: sklearn-formated data matrices
-
-    fold: int
-        The cv fold
-
-    num_folds: int
-        The total number of folds
-
-    random_seed: int or random state
-        The value used a the random seed for the k-fold split
-    """
-
-    check_range(fold, 0, num_folds, max_inclusive=False, variable_name="fold")
-
-    if y is None:
-        cv = sklearn.model_selection.KFold(n_splits=num_folds, random_state=random_seed)
-    else:
-        cv = sklearn.model_selection.StratifiedKFold(
-            n_splits=num_folds, random_state=random_seed
-        )
-
-    splits = cv.split(X, y)
-    train, test = more_itertools.nth(splits, fold)
-
-    X_train = X[train]
-    X_test = X[test]
-
-    if y is None:
-        y_train = None
-        y_test = None
-    else:
-        y_train = y[train]
-        y_test = y[test]
-
-    ret = fold_tuple(X_train, y_train, X_test, y_test)
-    return ret
