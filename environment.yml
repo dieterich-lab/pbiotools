@@ -11,7 +11,6 @@ dependencies:
   - joblib
   - matplotlib-base
   - matplotlib-venn # ?
-  - more-itertools
   - mygene # ?
   - numpy
   - openpyxl # ?
