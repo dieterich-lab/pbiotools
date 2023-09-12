@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - started 2023-02
 
+### Removed
+
+- `math_utils.get_kth_fold` (more_itertools)
+
 ## [4.0.1] - 2023-02
 
 ### Fixed

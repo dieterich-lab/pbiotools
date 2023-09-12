@@ -35,7 +35,6 @@ dependencies = [
   "joblib",
   "matplotlib",
   "matplotlib_venn",
-  "more_itertools",
   "mygene",
   "numpy",
   "openpyxl",
