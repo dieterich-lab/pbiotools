@@ -22,6 +22,12 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "macos-latest"]
         python-version: ["3.7", "3.8", "3.9", "3.10"]
+        exclude: # Python v3.7 does not support Apple Silicon ARM64
+          - python-version: "3.7"
+            os: macos-latest
+        include: # run legacy versions on Intel CPUs
+          - python-version: "3.7"
+            os: macos-13
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -41,10 +47,16 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "macos-latest"]
         python-version: ["3.7", "3.8", "3.9", "3.10"]
+        exclude: # Python v3.7 does not support Apple Silicon ARM64
+          - python-version: "3.7"
+            os: macos-latest
+        include: # run legacy versions on Intel CPUs
+          - python-version: "3.7"
+            os: macos-13
     steps:
       - uses: actions/checkout@v3
       - name: Create pbiotools conda environment
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: ${{ matrix.python-version }}
           auto-update-conda: true
