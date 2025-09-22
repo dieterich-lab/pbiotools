@@ -6,17 +6,12 @@ channels:
 dependencies:
   - python
   - biopython
-  - dask # ?
-  - fastparquet # ?
   - joblib
   - matplotlib-base
-  - matplotlib-venn # ?
-  - mygene # ?
+  - mygene
   - numpy
-  - openpyxl # ?
   - pandas
   - pip
-  - pyensembl # ?
   - pysam
   - pytest
   - seaborn

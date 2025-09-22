@@ -1,12 +1,13 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pbiotools"
 description = "Miscellaneous bioinformatics and other supporting utilities for Python 3"
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Brandon Malone" }]
 maintainers = [
   { name = "Etienne Boileau", email = "boileau@uni-heidelberg.de" }
@@ -17,32 +18,23 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Science/Research",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: MacOS :: MacOS X",
   "Operating System :: POSIX :: Linux",
-  "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 dynamic = ["version"]
-requires-python = ">=3.7,<3.11"
+requires-python = ">=3.11,<3.14"
 dependencies = [
   "biopython",
-  "dask",
-  "fastparquet",
   "joblib",
   "matplotlib",
-  "matplotlib_venn",
   "mygene",
   "numpy",
-  "openpyxl",
   "pandas",
   "pip",
-  "pyensembl",
   "pysam",
-  "pytest",
   "seaborn",
   "scikit-learn",
   "scipy",
@@ -93,8 +85,8 @@ docs = [
   "matplotlib",
   "nbsphinx",
   "pandoc",
-  "sphinx>=4.5.0",
-  "sphinx_rtd_theme>=1.0.0"
+  "sphinx",
+  "sphinx_rtd_theme"
 ]
 
 [tool.setuptools.dynamic]

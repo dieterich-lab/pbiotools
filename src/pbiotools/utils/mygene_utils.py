@@ -350,12 +350,6 @@ def get_transcript_to_gene_mapping(transcript_ids, species="all"):
     import pbiotools.misc.utils as utils
     import pandas as pd
 
-    # msg = (
-    # "[mygene_utils.get_transcript_to_gene_mapping]: Use the pyensembl "
-    # "package to find this mapping. It works locally and is much faster."
-    # )
-    # raise DeprecationWarning(msg)
-
     MG = mygene.MyGeneInfo()
     res = MG.querymany(
         transcript_ids,
@@ -437,12 +431,6 @@ def get_gene_to_transcript_mapping(
     import pbiotools.misc.parallel as parallel
     import pbiotools.misc.utils as utils
     import pandas as pd
-
-    # msg = (
-    # "[mygene_utils.get_gene_to_transcript_mapping]: Use the pyensembl "
-    # "package to find this mapping. It works locally and is much faster."
-    # )
-    # raise DeprecationWarning(msg)
 
     MG = mygene.MyGeneInfo()
     MG.url = mygene_url
