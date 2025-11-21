@@ -5,7 +5,20 @@ All notable changes to the `pbiotools` package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased] - started 2023-09
+## [Unreleased]
+
+## [5.0.0] - 2025-09
+
+### Removed
+
+- Support for Python 3.7, 3.8 (EOL), 3.9 and 3.10
+- Dependencies and related utilities: dask, fastparquet, matplotlib-venn, openpyxl, pyensembl
+- `misc.dask_utils`
+- `utils.pyensembl_utils`
+
+### Added
+
+- Support for Python 3.11, 3.12, and 3.13
 
 ## [4.0.2] - 2023-09
 

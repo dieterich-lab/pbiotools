@@ -15,8 +15,6 @@ import shutil
 import numpy as np
 import pandas as pd
 
-import openpyxl
-
 import pbiotools.misc.utils as utils
 
 import typing
@@ -73,7 +71,6 @@ def dataframe_to_dict(df, key_field, value_field):
 
 excel_extensions = ("xls", "xlsx")
 hdf5_extensions = ("hdf", "hdf5", "h5", "he5")
-parquet_extensions = ("parq",)
 
 
 def _guess_df_filetype(filename):
@@ -83,7 +80,6 @@ def _guess_df_filetype(filename):
 
         excel: xls, xlsx
         hdf5: hdf, hdf5, h5, he5
-        parquet: parq
         csv: all other extensions
 
     Additionally, if filename is a pd.ExcelWriter object, then the guessed
@@ -108,8 +104,6 @@ def _guess_df_filetype(filename):
         filetype = "excel"
     elif filename.endswith(hdf5_extensions):
         filetype = "hdf5"
-    elif filename.endswith(parquet_extensions):
-        filetype = "parquet"
     else:
         filetype = "csv"
 
@@ -127,7 +121,6 @@ def read_df(filename, filetype="AUTO", sheet=None, **kwargs):
 
         excel: xls, xlsx
         hdf5: hdf, hdf5, h5, he5
-        parquet: parq
         csv: all other extensions
 
     N.B. In principle, matlab data files are hdf5, so this function should
@@ -166,14 +159,6 @@ def read_df(filename, filetype="AUTO", sheet=None, **kwargs):
         df = pd.read_excel(filename, sheetname=sheet, **kwargs)
     elif filetype == "hdf5":
         df = pd.read_hdf(filename, key=sheet, **kwargs)
-    elif filetype == "parquet":
-        import fastparquet
-
-        pf = fastparquet.ParquetFile(filename, **kwargs)
-
-        # multi-indices are not yet supported, so we always have to turn
-        # off indices to avoid a NotImplementedError
-        df = pf.to_pandas(index=False)
     else:
         msg = "Could not read dataframe. Invalid filetype: {}".format(filetype)
         raise ValueError(msg)
@@ -197,7 +182,6 @@ def write_df(
 
         excel: xls, xlsx
         hdf5: hdf, hdf5, h5, he5
-        parquet: parq
         csv: all other extensions (e.g., "gz" or "bed")
 
     Additionally, the filetype can be specified as 'excel_writer'. In this
@@ -278,73 +262,9 @@ def write_df(
     elif filetype == "hdf5":
         df.to_hdf(out, sheet, **kwargs)
 
-    elif filetype == "parquet":
-        if not do_not_compress:
-            kwargs["compression"] = "GZIP"
-
-        # handle "index=False" kwarg
-        if "index" in kwargs:
-            index = kwargs.pop("index")
-
-            # if index is true, then no need to do anything
-            # that is the default
-            if not index:
-                kwargs["write_index"] = False
-
-        # if a parquet "file" exists, delete it
-        if os.path.exists(out):
-            # it could be either a folder or a file
-            if os.path.isfile(out):
-                # delete file
-                os.remove(out)
-            else:
-                # delete directory
-                shutil.rmtree(out)
-
-        import fastparquet
-
-        fastparquet.write(out, df, **kwargs)
-
     else:
         msg = "Could not write the dataframe. Invalid filetype: {}".format(filetype)
         raise ValueError(msg)
-
-
-def append_to_xlsx(df, xlsx, sheet="Sheet_1", **kwargs):
-    """This function appends the given dataframe to the excel file if it
-    already exists. If the file does not exist, it will be created.
-
-    N.B. This *will not* work with an open file handle! The xlsx argument
-        *must be* the path to the file.
-
-    Args:
-        df (pd.DataFrame): the data frame to write
-
-        xlsx (string): the path to the excel file.
-
-        sheet (string): the name of the sheet, which will be truncated to
-            31 characters
-
-        **kwargs : other keyword arguments to pass to the df.to_XXX method
-
-    Returns:
-        None
-
-    Imports:
-        pandas
-        openpyxl
-    """
-
-    # check if the file already exists
-    if os.path.exists(xlsx):
-        book = openpyxl.load_workbook(xlsx)
-        with pd.ExcelWriter(xlsx, engine="openpyxl") as writer:
-            writer.book = book
-            writer.sheets = dict((ws.title, ws) for ws in book.worksheets)
-            write_df(df, writer, sheet=sheet, **kwargs)
-    else:
-        # then we can just create it fresh
-        write_df(df, xlsx, sheet=sheet, **kwargs)
 
 
 def split_df(df: pd.DataFrame, num_groups: int):

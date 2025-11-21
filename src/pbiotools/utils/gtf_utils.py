@@ -1,9 +1,5 @@
 ###
 #   This module includes helpers for working with GTF files.
-#
-#   pyensembl includes many functions for querying, etc., GTF files. This
-#   module does not replace that functionality. Rather, it adds light-weight
-#   utilities for things like file conversion, etc.
 ###
 
 gtf_field_names = [

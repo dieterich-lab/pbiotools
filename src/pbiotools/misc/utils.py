@@ -850,47 +850,6 @@ def write_df(
         raise ValueError(msg)
 
 
-def append_to_xlsx(df, xlsx, sheet="Sheet_1", **kwargs):
-    """This function appends the given dataframe to the excel file if it
-    already exists. If the file does not exist, it will be created.
-
-    N.B. This *will not* work with an open file handle! The xlsx argument
-        *must be* the path to the file.
-
-    Args:
-        df (pd.DataFrame): the data frame to write
-
-        xlsx (string): the path to the excel file.
-
-        sheet (string): the name of the sheet, which will be truncated to
-            31 characters
-
-        **kwargs : other keyword arguments to pass to the df.to_XXX method
-
-    Returns:
-        None
-
-    Imports:
-        pandas
-        openpyxl
-    """
-    raise_deprecation_warning("append_to_xlsx", "misc.pandas_utils", "0.3.0", "misc")
-    import os
-    import pandas as pd
-    import openpyxl
-
-    # check if the file already exists
-    if os.path.exists(xlsx):
-        book = openpyxl.load_workbook(xlsx)
-        with pd.ExcelWriter(xlsx, engine="openpyxl") as writer:
-            writer.book = book
-            writer.sheets = dict((ws.title, ws) for ws in book.worksheets)
-            write_df(df, writer, sheet=sheet, **kwargs)
-    else:
-        # then we can just create it fresh
-        write_df(df, xlsx, sheet=sheet, **kwargs)
-
-
 ###
 #   Functions to help with built-in (ish) data structures
 ###
