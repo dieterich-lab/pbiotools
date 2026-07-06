@@ -437,7 +437,7 @@ def parse_mackowiak_id(mackowiak_id):
     """
     import pbiotools.misc.utils as utils
 
-    (object_id, seqname, start_end, strand) = utils.split(SPLIT_TOKENS, mackowiak_id)
+    object_id, seqname, start_end, strand = utils.split(SPLIT_TOKENS, mackowiak_id)
 
     start, end = start_end.split("-")
 

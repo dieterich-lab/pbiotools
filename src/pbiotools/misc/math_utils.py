@@ -193,8 +193,8 @@ def calculate_univariate_gaussian_kl(mean_p_var_p, mean_q_var_q):
     """
     import numpy as np
 
-    (mean_p, var_p) = mean_p_var_p
-    (mean_q, var_q) = mean_q_var_q
+    mean_p, var_p = mean_p_var_p
+    mean_q, var_q = mean_q_var_q
 
     t_1 = 0.5 * (np.log(var_p) - np.log(var_q))
     t_2 = np.log(mean_q * mean_q + mean_p * mean_p + var_q - 2 * mean_q * mean_p)
