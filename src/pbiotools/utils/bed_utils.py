@@ -542,14 +542,14 @@ def convert_genomic_coords_to_bed_blocks(coords, outer_sep=",", inner_sep="-"):
         raise ValueError(msg)
 
     # we need to handle the first exon specially because we need its start
-    (start, end, length) = parse_exon_start_end_length(exons[0], inner_sep)
+    start, end, length = parse_exon_start_end_length(exons[0], inner_sep)
 
     first_start = start
     exon_lengths.append(length)
     relative_starts.append(0)
 
     for exon in exons[1:]:
-        (start, end, length) = parse_exon_start_end_length(exon, inner_sep)
+        start, end, length = parse_exon_start_end_length(exon, inner_sep)
 
         relative_start = start - first_start
         exon_lengths.append(length)
@@ -1392,7 +1392,7 @@ def merge_all_intervals(bed, split=False):
                 interval_starts, interval_ends, interval_info
             )
 
-            (merged_starts, merged_ends, merged_info) = merged_intervals
+            merged_starts, merged_ends, merged_info = merged_intervals
 
             merged_ids_str = [":::".join(merged_id) for merged_id in merged_info]
             num_merged_ids = [len(merged_id) for merged_id in merged_info]

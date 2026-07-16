@@ -81,8 +81,6 @@ def parse_header(header):
         numpy (indirectly)
 
     """
-    global header_re
-
     m = header_re.match(header)
 
     if m is None:
